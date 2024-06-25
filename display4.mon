@@ -1,0 +1,26 @@
+[
+  {
+    "LoggingTableHeader": "Temperature [\u00B0C]",
+    "Alias": "Temperature",
+    "Unit": "\u00B0C",
+    "DecimalPlaces": "2",
+    "LTL": "10.0",
+    "UTL": "30.0",
+    "LSL": "0.0",
+    "USL": "40.0",
+    "Group": "Sensirion SHT31 Sensor",
+    "IsActive": true
+  },
+  {
+    "LoggingTableHeader": "Humidity [%]",
+    "Alias": "Humidity",
+    "Unit": "%",
+    "DecimalPlaces": "2",
+    "LTL": "40",
+    "UTL": "60",
+    "LSL": "35",
+    "USL": "65",
+    "Group": "Sensirion SHT31 Sensor",
+    "IsActive": true
+  }
+]

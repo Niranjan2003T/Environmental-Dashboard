@@ -1,0 +1,41 @@
+/* IMPORTANT: Install the library "Adafruit SHT31 Library" with the Library Manager first */
+
+#include "Adafruit_SHT31.h". // <-- Adafruit SHT31 Library
+#include "BlaeckSerial.h"
+
+float temperature;
+float humidity;
+
+Adafruit_SHT31 sht31 = Adafruit_SHT31();
+
+// Instantiate a new BlaeckSerial object
+BlaeckSerial BlaeckSerial;
+
+void setup()
+{
+  Serial.begin(9600);
+
+  sht31.begin(0x44);
+  // sht31.heater(true);
+
+  // Setup BlaeckSerial
+  BlaeckSerial.begin(
+      &Serial, // Serial reference
+      2        // Maximal signal count used;
+  );
+
+  BlaeckSerial.DeviceName = "Temp Humidity Sensor";
+  BlaeckSerial.DeviceHWVersion = "Arduino Mega 2560 Rev3";
+  BlaeckSerial.DeviceFWVersion = "1.0";
+
+  BlaeckSerial.addSignal("Temperature [°C]", &temperature);
+  BlaeckSerial.addSignal("Humidity [%]", &humidity);
+}
+
+void loop()
+{
+  temperature = sht31.readTemperature();
+  humidity = sht31.readHumidity();
+
+  BlaeckSerial.tick();
+}
